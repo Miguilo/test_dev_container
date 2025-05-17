@@ -13,7 +13,7 @@ app.add_middleware(
 
 @app.get("/")
 async def read_root():
-    return {"message": "Bem-vindo à API!"}
+    return {"message": "Bem-vindo à API! Teste"}
 
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
