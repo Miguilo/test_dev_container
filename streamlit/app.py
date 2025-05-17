@@ -30,5 +30,6 @@ if st.button("Buscar"):
     item_data = fetch_item(item_id)
     if "error" not in item_data:
         st.success(f"Item encontrado: {item_data['nome']}")
+        st.success("Testando docker")
     else:
         st.error("Erro ao buscar item") 
