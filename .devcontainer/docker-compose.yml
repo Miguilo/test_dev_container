@@ -1,0 +1,32 @@
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces:cached
+    command: sleep infinity
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app
+      - ..:/workspaces:cached
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  streamlit:
+    build:
+      context: ../streamlit
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - ../streamlit:/app
+      - ..:/workspaces:cached
+    depends_on:
+      - backend
